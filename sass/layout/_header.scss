@@ -1,0 +1,37 @@
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.801), rgba($color-primary-dark, 0.801)), url("../img/hero-small.jpg"); /* To have one image on top of another you seperate the images with a comma. The linear-gradient() is used to determine a fade of two colors and which directions. To make it transparent, use the color scale (better to check using rgb colors) */
+    background-size: cover; /* Cover: What ever the width of the vh it will fit the whole imageinside of the box width-wise */
+    background-position: top; /* top: this ensures that when we make the browser smaller, as it crops it keeps the top in view. Theres also bottom and center */
+    position: relative; /* This lets the children divs know to position absolutes to be relative to this div */
+    background-clip: content-box;
+    -webkit-background-clip: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* clip-path is used to cut from the image in this class. Using polygon indicates the shape to cut out, but we do not define the points on the cut out polygon. Rather we define the points of what we want to keep. It goes clock-wise corners. The first pair of numbers are for top left, the second pare are top right, third pair are bottom right, etc. In the pair the fist number is what percentage you want to move the corner to the right and the second number is what percentage you want to move the corner down */
+
+    @media(min-resolution: 192dpi) and (min-width: 37.5em),
+    (min-width: 125em) {
+        background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.801), rgba($color-primary-dark, 0.801)), url("../img/hero.jpg");
+    }
+
+    @include respond(phone) {
+        -webkit-background-clip: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
+
+    &__logo-box {
+        position: absolute; /* Absolute, means that on the z-axis everything else will go underneath it and it will always stay on top in that psotion as if its a top layer. So now, the top, left, right, and bottom on css will be relative not to its parent component but to the page. Absolute looks at the parent first to see if it has position relative. If it has that then its is relative to that otherwise its the whole page. */
+        top: 4rem;
+        left: 4rem;
+    }
+    &__logo {
+        height: 3.5rem;
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* transform: translate() will shift it left/right -50% and up/down -50% from its current positio, which starts at 50% of the page because of the left: 50% */
+        text-align: center;
+    }
+}

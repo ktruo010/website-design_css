@@ -1,0 +1,38 @@
+@keyframes moveInLeft { /* This is used for the animation for the header tests to fade and move in. Browsers are optimized to do two transforms at a time. */
+    0% { /* 0% is the percentage of the progress through the animation */
+        opacity: 0;
+        transform: translateX(-10rem); /* translateX lets it know to move in the x-axis. It starts at -100px moving right. */ 
+    }
+    80% {
+        transform: translateX(1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* translateX(0) is where it will end up, at the 0 or coded position */
+    }
+}
+
+@keyframes moveInRight { /* This is used for the animation for the header tests to fade and move in. Browsers are optimized to do two transforms at a time. */
+    0% { /* 0% is the percentage of the progress through the animation */
+        opacity: 0;
+        transform: translateX(10rem); /* translateX lets it know to move in the x-axis. It starts at -100px moving right. */ 
+    }
+    80% {
+        transform: translateX(-1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* translateX(0) is where it will end up, at the 0 or coded position */
+    }
+}
+
+@keyframes moveInButton { /* This is used for the animation for the header tests to fade and move in. Browsers are optimized to do two transforms at a time. */
+    0% { /* 0% is the percentage of the progress through the animation */
+        opacity: 0;
+        transform: translateY(3rem); /* translateX lets it know to move in the x-axis. It starts at -100px moving right. */ 
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* translateX(0) is where it will end up, at the 0 or coded position */
+    }
+}

@@ -1,0 +1,93 @@
+.btn {
+    &,
+    &:link, /* In  this example "link" is a psuedo class. Psuedo classes have one colon (:). Used to style under special conditions. Link functions as a link.  */
+    &:visited { /* visited psuedo class is to style after it has been visited. We are combining link and visited so they look the same wheter visited or not */
+        text-transform: uppercase;
+        text-decoration: none; /* This removed the default styling */
+        padding: 1.5rem 4rem;
+        display: inline-block; /* Compared to display: inline, the major difference is that display: inline-block allows to set a width and height on the element. Also, with display: inline-block, the top and bottom margins/paddings are respected, but with display: inline they are not. */
+        border-radius: 10rem; /* This will curve the edges */
+        transition:  all .2s; /* This determines the speed of the transitions (hover, active, etc. of its child psuedo classes */
+        position: relative;
+        font-size: 1.6rem;
+
+        // Change for <button> element
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black,.2); /* 0 for moving no where on X-axis, 10px on Y-axis, and 20px blur. rgb(0,0,0) is black. The .2 is the transparency value */
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active,
+    &:focus { /* active is when we click the element */
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2)
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
+    &::after {
+        content: ""; /* Psuedo elements have two colons (::). For the after psuedo element we ALWAYS have to have a content property, even if blank or it wont work */
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s /* This transition is for the .btn:hover::after */
+    }
+
+    &--animated {
+        animation: moveInButton .5s ease-out .75s;
+        animation-fill-mode: backwards; /* This will apply the animation of the 0% before the animation starts so that you do not see the button before the animation begins */
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0)
+        
+    }
+}

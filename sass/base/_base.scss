@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* By saying that box-sizing is inherit, box-sizing is now an inheriting property whereas by default it is not. So in the body{} box-sizing: border-box, it now passes it down to all its children. It is slightly better practive than to put box-sizing in the *{}*/
+}
+
+html {
+    font-size: 62.5%; // This defines what 1 rem is so it is not typography
+
+    @include respond(tab-land) {
+        font-size: 56.25%;
+    }
+    @include respond(tab-port) {
+        font-size: 50%;
+    }
+    @include respond(big-desktop) {
+        font-size: 75%;
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+}
